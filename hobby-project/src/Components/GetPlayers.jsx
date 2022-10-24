@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
 import APIToken from '../APIToken';
-import Player from './Player';
+import Player from './Props/Player';
 
 
-const Players = () => {    
+const GetPlayers = () => {    
     const [playerName, setPlayerName] = useState('');
     const [players, setPlayer] = useState([]);
 
@@ -21,7 +21,6 @@ const Players = () => {
                 <input type="text" value={playerName} onChange={(e) => setPlayerName(e.target.value)}/>
                 <button type="button" onClick={searchPlayer}>Search</button>
             </form>            
-            
             {
                 players.filter((player,i) => i < 5)
                 .map((player) => (
@@ -36,4 +35,4 @@ const Players = () => {
         </>
     );
 }
-export default Players;
+export default GetPlayers;

@@ -6,7 +6,7 @@
 .pnp.js
 
 #API key football
-.APIToken
+/APIToken
 
 # testing
 /coverage

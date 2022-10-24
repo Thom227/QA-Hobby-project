@@ -1,5 +1,6 @@
-// import React from 'react';
 import { useState } from 'react';
+import GetPlayers from './GetPlayers'
+import HandleClickAddDetails from './Props/HandleClickAddDetails';
 
 const Pitch = () => {
     const [addPlayer, setAddPlayer] = useState(false);
@@ -8,10 +9,9 @@ const Pitch = () => {
     const handleClickAddPlayer = e => {
         setAddPlayer(current => !current);
     };
-
     const handleClickAddDetails = e => {
         setAddDetails(current => !current);
-    }
+    };
 
     return(
         <div style={{
@@ -23,7 +23,6 @@ const Pitch = () => {
                 <button type="button" onClick={handleClickAddPlayer}> ST </button>
                 <button type="button" onClick={handleClickAddPlayer}> RW </button>
             </div>
-
             <br/>
             
             <div>
@@ -47,38 +46,20 @@ const Pitch = () => {
             </div>
         
             {addPlayer && (
-            <form>
-                <label>Search</label>
-                <input></input>
-                <br/> Or create<br/>
-                <label>Name</label>
-                <input></input>
-                <br/>
-                <button type="button" onClick={handleClickAddDetails} >Add more details</button>
-            </form>
-            )}
-
-            {addDetails &&(
                 <form>
-                    <label>Country</label>
+                    <GetPlayers/>
+                    Or create one <br/>
+                    <label>Name</label>
                     <input></input>
                     <br/>
-                    <label>Team</label>
-                    <input></input>
-                    <br/>
-                    <label>Age</label>
-                    <input></input>
-                    <br/>
-                    <label>Preferred foot:</label>
-                    <input></input>
+                    <button type="button" onClick={handleClickAddDetails} >Add more details</button>
                 </form>
             )}
 
+            {addDetails &&(
+                <HandleClickAddDetails/>
+            )}
         </div>
-        
-        
-        
-
     );
 }
 export default Pitch;
