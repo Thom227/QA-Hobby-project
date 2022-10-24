@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#API key football
+.APIToken
+
 # testing
 /coverage
 
