@@ -1,5 +1,6 @@
-import axios from 'axios';
+import {Button, Form, Col} from 'react-bootstrap';
 import { useState } from 'react';
+import axios from 'axios';
 import APIToken from '../APIToken';
 import Player from './Props/Player';
 
@@ -16,13 +17,21 @@ const GetPlayers = () => {
     }
     return(
         <>        
-            <form>
-                <label> Search player: </label>
-                <input type="text" value={playerName} onChange={(e) => setPlayerName(e.target.value)}/>
-                <button type="button" onClick={searchPlayer}>Search</button>
-            </form>            
+            <Form>
+                <Form.Group className="mb-3" controlId="getPlayer">
+                    <Col xs={3}>
+                        <Form.Control
+                        type="searchInput"
+                        value={playerName}
+                        placeHolder="Messi"
+                        onChange={(e) => setPlayerName(e.target.value)}
+                        />
+                        <Button type="Button" onClick={searchPlayer}>Search</Button>
+                    </Col>
+                </Form.Group>                    
+            </Form>            
             {
-                players.filter((player,i) => i < 5)
+                players.filter((player, i) => i < 5)
                 .map((player) => (
                     <Player
                     key={player.player_id}

@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function HandleClickAddDetails () {
+function CreatePlayer () {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);    
@@ -12,7 +12,7 @@ function HandleClickAddDetails () {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Or create one
+                Add more details
             </Button>
 
             <Modal show={show} onHide={handleClose}>
@@ -22,32 +22,17 @@ function HandleClickAddDetails () {
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3"
-                        controlId="addDetails.ControlInputName">
-                            <Form.Label>Name</Form.Label>
+                        controlId="addDetails.ControlInput1">
+                            <Form.Label>Search Player</Form.Label>
                             <Form.Control                            
-                            placeholder="Brian Brobbey"
+                            placeholder="Messi"
+                            autoFocus
                             />
                         </Form.Group>
-
-                        <Form.Group className="mb-3"
-                        controlId="addDetails.ControlInputAge">
-                            <Form.Label>age</Form.Label>
-                            <Form.Control                            
-                            placeholder="20"
-                            />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3"
-                        controlId="addDetails.ControlInputCountry">
-                            <Form.Label>Country</Form.Label>
-                            <Form.Control                            
-                            placeholder="Netherlands"
-                            />
-                        </Form.Group>
-
                         <Form.Group
                         className="mb-3"
-                        controlId="addDetails.ControlInputTeam">
+                        controlId="addDetails.ControlInput2"
+                        >
                             <Form.Label>Team</Form.Label>
                             <Form.Control
                             placeholder="Ajax"
@@ -58,9 +43,9 @@ function HandleClickAddDetails () {
                 <Modal.Footer>
                     <Button variant="primary" onClick={handleClose}>Create</Button>
                     <Button variant="secondary" onClick={handleClose}>Close</Button>
-                </Modal.Footer>
+                </Modal.Footer>            
             </Modal>
         </>        
     );
 }
-export default HandleClickAddDetails;
+export default CreatePlayer;

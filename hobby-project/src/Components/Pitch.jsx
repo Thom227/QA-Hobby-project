@@ -1,65 +1,58 @@
+import {Button, Form} from 'react-bootstrap';
 import { useState } from 'react';
 import GetPlayers from './GetPlayers'
-import HandleClickAddDetails from './Props/HandleClickAddDetails';
+import CreatePlayer from './Props/HandleClickAddDetails';
 
 const Pitch = () => {
-    const [addPlayer, setAddPlayer] = useState(false);
-    const [addDetails, setAddDetails] = useState(false);
+    const [show, setShow] = useState(false);
 
-    const handleClickAddPlayer = e => {
-        setAddPlayer(current => !current);
-    };
-    const handleClickAddDetails = e => {
-        setAddDetails(current => !current);
+    const HandleClick = e => {
+        setShow(current => !current);
     };
 
     return(
-        <div style={{
+        <div>            
+            <div style={{
             backgroundImage: `url("https://conceptdraw.com/a1970c3/p1/preview/640/pict--soccer-field-template-end-zone-view-association-football-pitch---template.png--diagram-flowchart-example.png")`,
-            // width: '351 px', height: '270.38 px', margin: '0 px'
-            }}>
-            <div>
-                <button type="button" onClick={handleClickAddPlayer}> LW </button>
-                <button type="button" onClick={handleClickAddPlayer}> ST </button>
-                <button type="button" onClick={handleClickAddPlayer}> RW </button>
-            </div>
-            <br/>
-            
-            <div>
-                <button type="button" onClick={handleClickAddPlayer}> CM </button>
-                <button type="button" onClick={handleClickAddPlayer}> CAM </button>
-                <button type="button" onClick={handleClickAddPlayer}> CM </button>
-            </div>
-            <br/>
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            height:450, width:600 }}>
+                <div>                
+                    <Button variant="outline-success" onClick={HandleClick}> LW </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> ST </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> RW </Button>
+                </div>
+                <br/>
+                
+                <div>
+                    <Button variant="outline-success" onClick={HandleClick}> CM </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> CAM </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> CM </Button>
+                </div>
+                <br/>
 
-            <div>
-                <button type="button" onClick={handleClickAddPlayer}> LB </button>
-                <button type="button" onClick={handleClickAddPlayer}> CB </button>
-                <button type="button" onClick={handleClickAddPlayer}> CB </button>
-                <button type="button" onClick={handleClickAddPlayer}> RB </button>
+                <div>
+                    <Button variant="outline-success" onClick={HandleClick}> LB </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> CB </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> CB </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> RB </Button>
+                </div>
+                <br/>
+
+                <div>
+                    <Button variant="outline-success" onClick={HandleClick}> GK </Button>
+                </div>                
             </div>
-            <br/>
-
-            <div>
-            <button type="button" onClick={handleClickAddPlayer}> GK </button>
-
-            </div>
-        
-            {addPlayer && (
-                <form>
-                    <GetPlayers/>
-                    Or create one <br/>
-                    <label>Name</label>
-                    <input></input>
-                    <br/>
-                    <button type="button" onClick={handleClickAddDetails} >Add more details</button>
-                </form>
-            )}
-
-            {addDetails &&(
-                <HandleClickAddDetails/>
-            )}
-        </div>
+            {show && (
+                    <Form>
+                        <Form.Group classname="mb-3" controlId="inputPlayer">
+                            <GetPlayers/>
+                            <CreatePlayer/>
+                        </Form.Group>
+                                           
+                    </Form>
+                )}
+        </div>        
     );
 }
 export default Pitch;
