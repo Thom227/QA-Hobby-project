@@ -1,19 +1,8 @@
-import {Button, Form} from 'react-bootstrap';
-import { useState } from 'react';
-import GetPlayers from './GetPlayers'
-import CreatePlayer from './Props/CreatePlayerOldFormat';
-import ST from './Positions/ST';
 import LW from './Positions/LW';
-import RW from './Positions/RW';
-
+import Position from './Positions/Position';
+import CreateCard from './Props/CreateCard';
 
 const Pitch = () => {
-    const [show, setShow] = useState(false);
-
-    const HandleClick = e => {
-        setShow(current => !current);
-    };
-    
     return(
         <div>            
             <div style={{
@@ -23,39 +12,31 @@ const Pitch = () => {
             height:450, width:600 }}>
                 <div>
                     <LW/>
-                    <ST/>
-                    <RW/>
+                    <Position position="ST" />
+                    <Position position="RW" />
                 </div>
                 <br/>
                 
                 <div>
-                    <Button variant="outline-success" onClick={HandleClick}> CM </Button>
-                    <Button variant="outline-success" onClick={HandleClick}> CAM </Button>
-                    <Button variant="outline-success" onClick={HandleClick}> CM </Button>
+                    <CreateCard/>
+                    <Position position="CM" />
+                    <Position position="CAM" />
+                    <Position position="CM" />
                 </div>
                 <br/>
 
                 <div>
-                    <Button variant="outline-success" onClick={HandleClick}> LB </Button>
-                    <Button variant="outline-success" onClick={HandleClick}> CB </Button>
-                    <Button variant="outline-success" onClick={HandleClick}> CB </Button>
-                    <Button variant="outline-success" onClick={HandleClick}> RB </Button>
+                    <Position position="LB" />
+                    <Position position="CB" />
+                    <Position position="CB" />
+                    <Position position="RB" />
                 </div>
                 <br/>
 
                 <div>
-                    <Button variant="outline-success" onClick={HandleClick}> GK </Button>
+                    <Position position="GK" />
                 </div>                
             </div>
-            {show && (
-                    <Form>
-                        <Form.Group classname="mb-3" controlId="inputPlayer">
-                            <GetPlayers/>
-                            <CreatePlayer/>
-                        </Form.Group>
-                                           
-                    </Form>
-                )}
         </div>        
     );
 }

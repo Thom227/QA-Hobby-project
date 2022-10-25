@@ -4,7 +4,6 @@ function Player({fullname, team_id, nationality}) {
             <p><strong>{`${fullname}`} </strong></p>
             <p>{`${team_id}`} </p>
             <p>{`${nationality}`} </p>
-
         </>        
     );
 }

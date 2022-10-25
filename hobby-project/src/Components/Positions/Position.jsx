@@ -1,16 +1,22 @@
 import {useState} from 'react';
 import {Modal, Form, Button} from 'react-bootstrap';
+import CreateCard from '../Props/CreateCard';
 
-function CAM () {
+function Position ({position}) {
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);    
-    const handleShow = () => setShow(true);
+    const [name, setName] = useState()
+    const [age, setAge] = useState()
+    const [country, setCountry] = useState()
+    const [team, setTeam] = useState()
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                ST
+            <Button variant="outline-success" onClick={handleShow}>
+                {position}
             </Button>
 
             <Modal show={show} onHide={handleClose}>
@@ -23,7 +29,7 @@ function CAM () {
                         controlId="addDetails.ControlInputName">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
-                            value=""
+                            value={name} onChange={(e) => setName(e.target.value)}
                             placeholder="Brian Brobbey"
                             />
                         </Form.Group>
@@ -31,7 +37,8 @@ function CAM () {
                         <Form.Group className="mb-3"
                         controlId="addDetails.ControlInputAge">
                             <Form.Label>age</Form.Label>
-                            <Form.Control                            
+                            <Form.Control
+                            value={age} onChange={(e) => setAge(e.target.value)}
                             placeholder="20"
                             />
                         </Form.Group>
@@ -39,16 +46,17 @@ function CAM () {
                         <Form.Group className="mb-3"
                         controlId="addDetails.ControlInputCountry">
                             <Form.Label>Country</Form.Label>
-                            <Form.Control                            
+                            <Form.Control 
+                            value={country} onChange={(e) => setCountry(e.target.value)}
                             placeholder="Netherlands"
                             />
                         </Form.Group>
 
-                        <Form.Group
-                        className="mb-3"
+                        <Form.Group className="mb-3"
                         controlId="addDetails.ControlInputTeam">
                             <Form.Label>Team</Form.Label>
                             <Form.Control
+                            value={team} onChange={(e) => setTeam(e.target.value)}
                             placeholder="Ajax"
                             />
                         </Form.Group>                    
@@ -59,7 +67,13 @@ function CAM () {
                     <Button variant="secondary" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
+           { (name) && <CreateCard
+            name={name}
+            age={age}
+            country={country}
+            team={team}
+        /> }
         </>        
     );
 }
-export default CAM;
+export default Position;

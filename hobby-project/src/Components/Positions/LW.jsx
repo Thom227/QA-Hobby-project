@@ -1,9 +1,10 @@
 import {useState} from 'react';
 import {Modal, Form, Button} from 'react-bootstrap';
-import HandleCreate from '../HandleCreate';
+import CreateCard from '../Props/CreateCard';
 
 function LW () {
     const [show, setShow] = useState(false);
+
     const [name, setName] = useState()
     const [age, setAge] = useState()
     const [country, setCountry] = useState()
@@ -11,8 +12,6 @@ function LW () {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const handleCreate = () => {<HandleCreate/>}
 
     return (
         <>
@@ -61,21 +60,20 @@ function LW () {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleCreate && handleClose}>Create</Button>
+                    <Button variant="primary" onClick={handleClose}>Create</Button>
                     <Button variant="secondary" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
-
-            <HandleCreate
+           { (name || age || country ||team) && <CreateCard
             name={name}
             age={age}
             country={country}
             team={team}
-            />
-
+        /> }
             <Button variant="outline-success" onClick={handleShow}>
                 LW
             </Button>
+        
         </>        
     );
 }
