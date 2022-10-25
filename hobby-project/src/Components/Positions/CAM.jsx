@@ -1,9 +1,7 @@
 import {useState} from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import {Modal, Form, Button} from 'react-bootstrap';
 
-function CreatePlayer () {
+function CAM () {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);    
@@ -12,7 +10,7 @@ function CreatePlayer () {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Add more details
+                ST
             </Button>
 
             <Modal show={show} onHide={handleClose}>
@@ -22,17 +20,33 @@ function CreatePlayer () {
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3"
-                        controlId="addDetails.ControlInput1">
-                            <Form.Label>Search Player</Form.Label>
-                            <Form.Control                            
-                            placeholder="Messi"
-                            autoFocus
+                        controlId="addDetails.ControlInputName">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control
+                            value=""
+                            placeholder="Brian Brobbey"
                             />
                         </Form.Group>
+
+                        <Form.Group className="mb-3"
+                        controlId="addDetails.ControlInputAge">
+                            <Form.Label>age</Form.Label>
+                            <Form.Control                            
+                            placeholder="20"
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3"
+                        controlId="addDetails.ControlInputCountry">
+                            <Form.Label>Country</Form.Label>
+                            <Form.Control                            
+                            placeholder="Netherlands"
+                            />
+                        </Form.Group>
+
                         <Form.Group
                         className="mb-3"
-                        controlId="addDetails.ControlInput2"
-                        >
+                        controlId="addDetails.ControlInputTeam">
                             <Form.Label>Team</Form.Label>
                             <Form.Control
                             placeholder="Ajax"
@@ -43,9 +57,9 @@ function CreatePlayer () {
                 <Modal.Footer>
                     <Button variant="primary" onClick={handleClose}>Create</Button>
                     <Button variant="secondary" onClick={handleClose}>Close</Button>
-                </Modal.Footer>            
+                </Modal.Footer>
             </Modal>
         </>        
     );
 }
-export default CreatePlayer;
+export default CAM;

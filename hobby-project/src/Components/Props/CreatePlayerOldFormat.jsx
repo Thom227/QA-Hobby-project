@@ -1,9 +1,7 @@
 import {useState} from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import {Modal, Form, Button} from 'react-bootstrap';
 
-function HandleClickAddDetails () {
+function CreatePlayer () {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);    
@@ -24,7 +22,8 @@ function HandleClickAddDetails () {
                         <Form.Group className="mb-3"
                         controlId="addDetails.ControlInputName">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control                            
+                            <Form.Control
+                            value=""
                             placeholder="Brian Brobbey"
                             />
                         </Form.Group>
@@ -63,4 +62,4 @@ function HandleClickAddDetails () {
         </>        
     );
 }
-export default HandleClickAddDetails;
+export default CreatePlayer;

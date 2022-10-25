@@ -23,7 +23,7 @@ const GetPlayers = () => {
                         <Form.Control
                         type="searchInput"
                         value={playerName}
-                        placeHolder="Messi"
+                        placeholder="Messi"
                         onChange={(e) => setPlayerName(e.target.value)}
                         />
                         <Button type="Button" onClick={searchPlayer}>Search</Button>

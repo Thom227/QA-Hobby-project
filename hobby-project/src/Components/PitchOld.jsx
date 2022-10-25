@@ -2,12 +2,8 @@ import {Button, Form} from 'react-bootstrap';
 import { useState } from 'react';
 import GetPlayers from './GetPlayers'
 import CreatePlayer from './Props/CreatePlayerOldFormat';
-import ST from './Positions/ST';
-import LW from './Positions/LW';
-import RW from './Positions/RW';
 
-
-const Pitch = () => {
+const PitchOld = () => {
     const [show, setShow] = useState(false);
 
     const HandleClick = e => {
@@ -21,10 +17,10 @@ const Pitch = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "contain",
             height:450, width:600 }}>
-                <div>
-                    <LW/>
-                    <ST/>
-                    <RW/>
+                <div>                
+                    <Button variant="outline-success" onClick={HandleClick}> LW </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> ST </Button>
+                    <Button variant="outline-success" onClick={HandleClick}> RW </Button>
                 </div>
                 <br/>
                 
@@ -59,4 +55,4 @@ const Pitch = () => {
         </div>        
     );
 }
-export default Pitch;
+export default PitchOld;
