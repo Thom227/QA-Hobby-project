@@ -1,20 +1,19 @@
-import LW from './Positions/LW';
-import Position from './Positions/Position';
+import Position from './Position';
 import {Container, Row, Col} from 'react-bootstrap';
-import PlayerTable from './Props/Table';
 
 const Pitch = () => {
     return(
-        <div style={{
-        backgroundImage: `url("https://conceptdraw.com/a1970c3/p1/preview/640/pict--soccer-field-template-end-zone-view-association-football-pitch---template.png--diagram-flowchart-example.png")`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "contain",
-        height:580, width:750 }}>
-            <Container>
-                <br/><br/><br/><br/><br/><br/>
+        <div>
+            <Container style={{
+            backgroundImage: `url("https://conceptdraw.com/a1970c3/p1/preview/640/pict--soccer-field-template-end-zone-view-association-football-pitch---template.png--diagram-flowchart-example.png")`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            height:580, width:750 }}>                
+
+                <br/><br/><br/><br/>
                 <Row style={{heigth: ''}}>
                     <Col md={{span: 1, offset: 3}} >
-                        <LW/>
+                        <Position position="LW" />
                     </Col>
                     <Col md={{span: 2, offset: 1}}>
                         <Position position="ST" />
@@ -57,7 +56,6 @@ const Pitch = () => {
                     </Col>
                 </Row>
             </Container>
-            <PlayerTable/>
         </div>
     );
 }

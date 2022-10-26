@@ -1,17 +1,28 @@
+import axios from 'axios';
 import {useState} from 'react';
 import {Modal, Form, Button} from 'react-bootstrap';
-import CreateCard from '../Props/CreateCard';
+// import CreateCard from './Props/CreateCard';
 
 function Position ({position}) {
-    const [show, setShow] = useState(false);
 
-    const [name, setName] = useState()
-    const [age, setAge] = useState()
-    const [country, setCountry] = useState()
-    const [team, setTeam] = useState()
+    const [name, setName] = useState('')
+    const [age, setAge] = useState('')
+    const [country, setCountry] = useState('')
+    const [team, setTeam] = useState('')
+    
+    const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        handleClose();
+        const res = await axios.post('http://localhost:4494/football/createPlayer', {
+            name, age, country, team,
+        });
+        console.log(`Player: ${name} succesfully created`, res.data);;
+    }
     
     return (
         <>
@@ -31,6 +42,7 @@ function Position ({position}) {
                             <Form.Control
                             value={name} onChange={(e) => setName(e.target.value)}
                             placeholder="Brian Brobbey"
+                            
                             />
                         </Form.Group>
 
@@ -63,17 +75,17 @@ function Position ({position}) {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleClose}>Create</Button>
+                    <Button variant="primary" onClick={handleSubmit}>Create</Button>
                     <Button variant="secondary" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
-           { (name) && <CreateCard
+           {/* { (name) && <CreateCard
             name={name}
             age={age}
             country={country}
             team={team}
-        /> }
-        </>        
+        /> } */}
+        </>
     );
 }
 export default Position;

@@ -1,8 +1,25 @@
-import {Table} from 'react-bootstrap';
+import {Table, ToggleButton} from 'react-bootstrap';
+import {useState} from 'react';
 
 const PlayerTable = (name) => {
+
+
+    const [checked, setChecked] = useState(false);
+
+
     return(
         <>
+            <ToggleButton
+            id="toggle-team"
+            type="checkbox"
+            variant="outline-primary"
+            checked={checked}
+            value="1"
+            onChange={(e) => setChecked(e.currentTarget.checked)}
+            >
+                Team
+            </ToggleButton>
+
             <Table striped bordered hover variant="dark" size="sm">
                 <thead>
                     <tr>
