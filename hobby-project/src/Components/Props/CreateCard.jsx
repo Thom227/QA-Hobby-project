@@ -4,12 +4,7 @@ const CreateCard = ({
     name, age, country, team
 }) => {    
         return (
-            <Card
-            style={{
-                width: '6rem', height: '6rem',
-                fontSize: 11,
-                display: "flex",           
-                }}>
+            <Card>            
                 <Card.Body>
                     <Card.Text>
                         <strong>{name}</strong><br/>
@@ -17,8 +12,8 @@ const CreateCard = ({
                         {country}<br/>
                         {team}
                     </Card.Text>
-                    <Button variant="primary">Update</Button>
-                    <Button variant="danger">Delete</Button>
+                    <Button variant="primary" size="sm">Update</Button>
+                    <Button variant="danger" size="sm">Delete</Button>
                 </Card.Body>
             </Card>            
         )
