@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/football_bd",
+mongoose.connect("mongodb://localhost:27017/football_db",
 (err) => err ? console.error(err) : console.log("connected to DB"));
 
 const footballSchema = new mongoose.Schema({
@@ -18,6 +18,10 @@ const footballSchema = new mongoose.Schema({
     },
     team: {
         type: String
+    },
+    position: {
+        type: String,
+        required: true
     }
 });
 

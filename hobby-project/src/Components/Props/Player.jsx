@@ -1,4 +1,4 @@
-function Player({fullname, team_id, nationality}) {
+function Player({player_id, fullname, team_id, nationality}) {
     return(
         <>
             <p><strong>{`${fullname}`} </strong></p>

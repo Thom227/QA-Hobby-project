@@ -1,15 +1,14 @@
 import axios from 'axios';
-import {useState} from 'react';
-import {Modal, Form, Button} from 'react-bootstrap';
-// import CreateCard from './Props/CreateCard';
+import { useState } from 'react';
+import { Modal, Form, Button } from 'react-bootstrap';
 
-function Position ({position}) {
+function Position({ position }) {
 
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
     const [country, setCountry] = useState('')
     const [team, setTeam] = useState('')
-    
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -19,11 +18,17 @@ function Position ({position}) {
         e.preventDefault();
         handleClose();
         const res = await axios.post('http://localhost:4494/football/createPlayer', {
-            name, age, country, team,
+            name, age, country, team, position
         });
         console.log(`Player: ${name} succesfully created`, res.data);;
     }
-    
+
+    // const handleHover = async () => {
+    //     const player = await axios.get("http://localhost:4494/football/get/" + position);
+    //     console.log(position + ":", player);
+    // }
+    // onMouseOver={handleHover}
+
     return (
         <>
             <Button variant="outline-success" onClick={handleShow}>
@@ -37,41 +42,41 @@ function Position ({position}) {
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3"
-                        controlId="addDetails.ControlInputName">
+                            controlId="addDetails.ControlInputName">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
-                            value={name} onChange={(e) => setName(e.target.value)}
-                            placeholder="Brian Brobbey"
-                            
+                                value={name} onChange={(e) => setName(e.target.value)}
+                                placeholder="Brian Brobbey"
+
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3"
-                        controlId="addDetails.ControlInputAge">
+                            controlId="addDetails.ControlInputAge">
                             <Form.Label>age</Form.Label>
                             <Form.Control
-                            value={age} onChange={(e) => setAge(e.target.value)}
-                            placeholder="20"
+                                value={age} onChange={(e) => setAge(e.target.value)}
+                                placeholder="20"
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3"
-                        controlId="addDetails.ControlInputCountry">
+                            controlId="addDetails.ControlInputCountry">
                             <Form.Label>Country</Form.Label>
-                            <Form.Control 
-                            value={country} onChange={(e) => setCountry(e.target.value)}
-                            placeholder="Netherlands"
+                            <Form.Control
+                                value={country} onChange={(e) => setCountry(e.target.value)}
+                                placeholder="Netherlands"
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3"
-                        controlId="addDetails.ControlInputTeam">
+                            controlId="addDetails.ControlInputTeam">
                             <Form.Label>Team</Form.Label>
                             <Form.Control
-                            value={team} onChange={(e) => setTeam(e.target.value)}
-                            placeholder="Ajax"
+                                value={team} onChange={(e) => setTeam(e.target.value)}
+                                placeholder="Ajax"
                             />
-                        </Form.Group>                    
+                        </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -79,12 +84,6 @@ function Position ({position}) {
                     <Button variant="secondary" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
-           {/* { (name) && <CreateCard
-            name={name}
-            age={age}
-            country={country}
-            team={team}
-        /> } */}
         </>
     );
 }

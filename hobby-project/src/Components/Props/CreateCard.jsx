@@ -1,19 +1,20 @@
 import {Button, Card} from 'react-bootstrap'
 
 const CreateCard = ({
-    name, age, country, team
+    _id, position, name, age, country, team, handleDelete, handleUpdate
 }) => {    
         return (
             <Card>            
                 <Card.Body>
                     <Card.Text>
-                        <strong>{name}</strong><br/>
+                        <u>{position}</u><br/>
+                        <b>{name}</b><br/>
                         {age}<br/>
                         {country}<br/>
                         {team}
                     </Card.Text>
-                    <Button variant="primary" size="sm">Update</Button>
-                    <Button variant="danger" size="sm">Delete</Button>
+                    <Button variant="primary" onClick={handleUpdate}>Update</Button>
+                    <Button variant="danger" onClick={handleDelete}>Delete</Button>
                 </Card.Body>
             </Card>            
         )

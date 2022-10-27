@@ -5,7 +5,7 @@ import APIToken from '../APIToken';
 import Player from './Props/Player';
 
 
-const GetPlayers = () => {    
+const FetchPlayerSM = () => {    
     const [playerName, setPlayerName] = useState('');
     const [players, setPlayer] = useState([]);
 
@@ -35,6 +35,7 @@ const GetPlayers = () => {
                 .map((player) => (
                     <Player
                     key={player.player_id}
+                    id={player.player_id}
                     fullname={player.fullname}
                     team_id={player.team_id}
                     nationality={player.nationality}
@@ -44,4 +45,4 @@ const GetPlayers = () => {
         </>
     );
 }
-export default GetPlayers;
+export default FetchPlayerSM;
